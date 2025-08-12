@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Android to Laptop Screen Share</title>
+</head>
+<body>
+    <h2>Share Screen from Android to Laptop</h2>
+    <button id="shareBtn">Start Sharing</button>
+    <video id="video" autoplay playsinline style="width:100%; border:1px solid black;"></video>
+
+    <script>
+        const video = document.getElementById('video');
+        const shareBtn = document.getElementById('shareBtn');
+
+        shareBtn.onclick = async () => {
+            try {
+                // Ambil layar dari HP
+                const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+                video.srcObject = stream;
+            } catch (err) {
+                console.error("Error:", err);
+            }
+        };
+    </script>
+</body>
+</html>
